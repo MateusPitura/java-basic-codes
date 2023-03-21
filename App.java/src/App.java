@@ -27,7 +27,7 @@ public class App {
 
         // componente JTextArea
         //JTextArea miJTextArea = new JTextArea(5,20); 
-        JComboBox miJComboBox = new JComboBox();
+        JComboBox myJComboBox = new JComboBox();
         miJComboBox.addItem("Conversor de moedas");
         miJComboBox.addItem("Conversor de temperatura");
         String[] options = {"Conversor de moedas", "Conversor de temperatura"};

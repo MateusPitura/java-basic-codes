@@ -5,8 +5,9 @@ public class TestaRemocao {
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = cf.recuperarConexao();
 
-        Statement stm = con.createStatement();
-        stm.execute("delete from produto where id > 2");
+        PreparedStatement stm = con.prepareStatement("delete from produto where id >= ?");
+        stm.setInt(1, 2);
+        stm.execute();
 
         Integer linhasModificadas = stm.getUpdateCount();
         System.out.println(linhasModificadas);

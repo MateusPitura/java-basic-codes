@@ -1,15 +1,15 @@
 import java.sql.*;
 import java.util.*;
 
-public class DAO{
+public class ProdutoDAO{
     
     private Connection con;
 
-    public DAO(Connection con){
+    public ProdutoDAO(Connection con){
         this.con = con;
     }
 
-    public void salvarProduto(Produto produto) throws SQLException{
+    public void inserir(Produto produto) throws SQLException{
         String sql = "INSERT INTO produto (NOME, DESCRICAO) VALUES (?, ?)";
         try(PreparedStatement pstm = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
             pstm.setString(1, produto.getNome());
@@ -41,10 +41,10 @@ public class DAO{
         return produtos;
     }
 
-    public int remover() throws SQLException{
-        String sql = "DELETE FROM produto WHERE ID >= ?";
+    public int remover(Integer id) throws SQLException{
+        String sql = "DELETE FROM produto WHERE ID = ?";
         try(PreparedStatement pstm = con.prepareStatement(sql)){
-            pstm.setInt(1, 2);
+            pstm.setInt(1, id);
             pstm.execute();
             return pstm.getUpdateCount();
         }

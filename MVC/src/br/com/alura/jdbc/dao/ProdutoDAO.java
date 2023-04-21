@@ -20,7 +20,7 @@ public class ProdutoDAO {
 	}
 
 	public void salvar(Produto produto) throws SQLException {
-		String sql = "INSERT INTO PRODUTO (NOME, DESCRICAO) VALUES (?, ?)";
+		String sql = "INSERT INTO produto (nome, descricao) VALUES (?, ?)";
 
 		try (PreparedStatement pstm = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
@@ -38,7 +38,7 @@ public class ProdutoDAO {
 	}
 
 	public void salvarComCategoria(Produto produto) throws SQLException {
-		String sql = "INSERT INTO PRODUTO (NOME, DESCRICAO, CATEGORIA_ID) VALUES (?, ?, ?)";
+		String sql = "INSERT INTO produto (nome, descricao, categoria_id) VALUES (?, ?, ?)";
 
 		try (PreparedStatement pstm = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
@@ -58,7 +58,7 @@ public class ProdutoDAO {
 
 	public List<Produto> listar() throws SQLException {
 		List<Produto> produtos = new ArrayList<Produto>();
-		String sql = "SELECT ID, NOME, DESCRICAO FROM PRODUTO";
+		String sql = "SELECT id, nome, descricao FROM produto";
 
 		try (PreparedStatement pstm = connection.prepareStatement(sql)) {
 			pstm.execute();
@@ -70,7 +70,7 @@ public class ProdutoDAO {
 
 	public List<Produto> buscar(Categoria ct) throws SQLException {
 		List<Produto> produtos = new ArrayList<Produto>();
-		String sql = "SELECT ID, NOME, DESCRICAO FROM PRODUTO WHERE CATEGORIA_ID = ?";
+		String sql = "SELECT id, nome, descricao FROM produto WHERE categoria_id = ?";
 
 		try (PreparedStatement pstm = connection.prepareStatement(sql)) {
 			pstm.setInt(1, ct.getId());
@@ -82,7 +82,7 @@ public class ProdutoDAO {
 	}
 
 	public void deletar(Integer id) throws SQLException {
-		try (PreparedStatement stm = connection.prepareStatement("DELETE FROM PRODUTO WHERE ID = ?")) {
+		try (PreparedStatement stm = connection.prepareStatement("DELETE FROM produto WHERE id = ?")) {
 			stm.setInt(1, id);
 			stm.execute();
 		}
@@ -90,7 +90,7 @@ public class ProdutoDAO {
 
 	public void alterar(String nome, String descricao, Integer id) throws SQLException {
 		try (PreparedStatement stm = connection
-				.prepareStatement("UPDATE PRODUTO P SET P.NOME = ?, P.DESCRICAO = ? WHERE ID = ?")) {
+				.prepareStatement("UPDATE produto P SET P.nome = ?, P.descricao = ? WHERE id = ?")) {
 			stm.setString(1, nome);
 			stm.setString(2, descricao);
 			stm.setInt(3, id);

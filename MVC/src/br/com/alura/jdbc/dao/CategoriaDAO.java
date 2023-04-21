@@ -20,7 +20,7 @@ public class CategoriaDAO {
 
 	public List<Categoria> listar() throws SQLException {
 		List<Categoria> categorias = new ArrayList<>();
-		String sql = "SELECT ID, NOME FROM CATEGORIA";
+		String sql = "SELECT id, nome FROM categoria";
 
 		try (PreparedStatement pstm = connection.prepareStatement(sql)) {
 			pstm.execute();
@@ -40,8 +40,8 @@ public class CategoriaDAO {
 		Categoria ultima = null;
 		List<Categoria> categorias = new ArrayList<>();
 
-		String sql = "SELECT C.ID, C.NOME, P.ID, P.NOME, P.DESCRICAO " + "FROM CATEGORIA C "
-				+ "INNER JOIN PRODUTO P ON C.ID = P.CATEGORIA_ID";
+		String sql = "SELECT C.id, C.nome, P.id, P.nome, P.descricao " + "FROM categoria C "
+				+ "INNER JOIN produto P ON C.id = P.categoria_id";
 
 		try (PreparedStatement pstm = connection.prepareStatement(sql)) {
 			pstm.execute();

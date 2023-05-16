@@ -14,6 +14,7 @@ public class Produto {
     @Column(name = "descricao")
     private String desc;
     private BigDecimal preco;
+    @Column(name = "data_cadastro")
     private LocalDate dataCadastro = LocalDate.now();
 
     @ManyToOne

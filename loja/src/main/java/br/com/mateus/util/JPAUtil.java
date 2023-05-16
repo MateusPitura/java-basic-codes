@@ -3,9 +3,9 @@ package br.com.mateus.util;
 import javax.persistence.*;
 
 public class JPAUtil {
-    private final EntityManagerFactory FACTORY = Persistence.createEntityManagerFactory("loja");
+    private static final EntityManagerFactory FACTORY = Persistence.createEntityManagerFactory("loja");
     
-    public EntityManager getEntityManager(){
+    public static EntityManager getEntityManager(){
         return FACTORY.createEntityManager();
     }
 }

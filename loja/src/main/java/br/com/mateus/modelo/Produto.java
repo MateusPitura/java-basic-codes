@@ -1,7 +1,7 @@
 package br.com.mateus.modelo;
 
 import java.math.BigDecimal;
-
+import java.time.LocalDate;
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +14,66 @@ public class Produto {
     @Column(name = "descricao")
     private String desc;
     private BigDecimal preco;
+    private LocalDate dataCadastro = LocalDate.now();
 
-    
+    @ManyToOne
+    private Categoria categoria;
+
+    public Produto(){
+    }
+
+    public Produto(String nome, String desc, BigDecimal preco, Categoria categoria){
+        this.nome=nome;
+        this.desc=desc;
+        this.preco=preco;
+        this.categoria=categoria;
+    }
+
+    public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getDescricao() {
+		return desc;
+	}
+
+	public void setDescricao(String desc) {
+		this.desc = desc;
+	}
+
+	public BigDecimal getPreco() {
+		return preco;
+	}
+
+	public void setPreco(BigDecimal preco) {
+		this.preco = preco;
+	}
+
+	public LocalDate getDataCadastro() {
+		return dataCadastro;
+	}
+
+	public void setDataCadastro(LocalDate dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 }

@@ -7,6 +7,7 @@
 >
     <persistence-unit name="loja" transaction-type="RESOURCE_LOCAL">
         <class>br.com.mateus.modelo.Produto</class>
+        <class>br.com.mateus.modelo.Categoria</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/loja"/>

@@ -8,13 +8,13 @@ import br.com.mateus.modelo.*;
 public class CadastrosDeProdutos {
     public static void main(String[] args) {
         EntityManager em = new JPAUtil().getEntityManager();
-        Categoria celulares = new Categoria("CELULARES");
-        Produto celular = new Produto("Xiomi Redmi", "Muito Legal", new BigDecimal("800"), celulares);
+        Categoria videogames = new Categoria("NOTEBOOK");
+        Produto playstation = new Produto("Macbook Pro", "Caro", new BigDecimal("7000"), videogames);
         
         em.getTransaction().begin();
 
-        em.persist(celulares);
-        em.persist(celular);
+        em.persist(videogames);
+        em.persist(playstation);
 
         em.getTransaction().commit();
         em.close();
